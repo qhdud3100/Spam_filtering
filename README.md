@@ -3,4 +3,4 @@
   
 # 설명
   spamTraining.txt과 hamTraining.txt 파일로 메일에 등장하는 단어들의 빈도수에 대해 training을 한 뒤 
-  임의의 이메일 spam1~5와 ham1~5에 대해 testing을 한다. 
+  임의의 이메일 spam1~5과 ham1~5에 대해 testing을 한다. 

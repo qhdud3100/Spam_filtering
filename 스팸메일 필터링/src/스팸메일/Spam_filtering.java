@@ -8,6 +8,9 @@ import java.util.Vector;
 public class Spam_filtering {
 	public static Vector<wordCount> spamList = new  Vector<wordCount>();;
 	public static Vector<wordCount> hamList = new  Vector<wordCount>();
+	Scanner scanner = new Scanner(System.in);
+	public String txtName;
+	
 	
 	public class wordCount{
 		String word; //단어
@@ -25,6 +28,8 @@ public class Spam_filtering {
 		spamFiltering.testing();
 	}
 	
+	
+	// 스팸메일과 일반메일의 단어 등장 횟수를 학습하여 그 정보를 벡터 타입으로 리턴
 	public Vector<wordCount> training(String fileName){
 
 		Vector<wordCount> list = new Vector<wordCount>();
@@ -68,33 +73,26 @@ public class Spam_filtering {
 				}
 			}
 		}
-//		for(wordCount tmp : list) {
-//			System.out.println("'"+ tmp.word+"' -> "+ tmp.count + "/25");
-//		}
 		
 		return list;
 	}
-
+	
+	//임의의 txt에 대하여 스팸메일인지 판단하여 알려주는 부분
 	public void testing() {
 		boolean isSpam;
 		
-		for(int i=1;i<=5;i++) {
-			//a_simple_bayesian_spam_filter으로 하나씩 보낸다.
-			isSpam = a_simple_bayesian_spam_filter("spam"+i);
-			//하나에 대한 결과값을 출력한다.
-			if(isSpam)System.out.println("spam"+i + " 이메일은 스팸입니다. \n");
-			else System.out.println("spam"+i + " 이메일은 스팸이 아닙니다. \n");
-		}
+		System.out.println("텍스트 파일명을 입력하세요.");
+		txtName = scanner.next(); // txt를 입력받는다. 
+		
+		isSpam = a_simple_bayesian_spam_filter(txtName);
+		
+		//하나에 대한 결과값을 출력한다.
+		if(isSpam)System.out.println("스팸입니다. \n");
+		else System.out.println("스팸이 아닙니다. \n");
 
-		for(int i=1;i<=5;i++) {
-			//a_simple_bayesian_spam_filter으로 하나씩 보낸다.
-			isSpam = a_simple_bayesian_spam_filter("ham"+i);
-			//하나에 대한 결과값을 출력한다.
-			if(isSpam)System.out.println("ham"+i + " 이메일은 스팸입니다. \n");
-			else System.out.println("ham"+i + " 이메일은 스팸이 아닙니다. \n");
-		}
 	}
 	
+	// txt이름을 받아가서 
 	boolean a_simple_bayesian_spam_filter(String filename_for_test_email) {
 		
 		double spamProduct=1;
@@ -103,13 +101,11 @@ public class Spam_filtering {
 		try {
 			inputStream = new Scanner(new File(filename_for_test_email));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			System.out.println("파일을 찾을 수 없습니다.");
 		}
 		
 		while(inputStream.hasNextLine()) { 
 			String word []= inputStream.nextLine().split(" "); //메일을 단어로 분리
-//			String word[] = oneLine[0].split(" "); //한 메일을 단어로 분리
 			
 			for(int i=0;i<word.length;i++) {//단어 하나씩 접근 
 				//스팸 리스트에서 하나씩 빼오기

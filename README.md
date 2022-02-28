@@ -1,6 +1,16 @@
+[2020.10.8]
 # 프로젝트 소개
   베이시안 알고리즘을 사용해 스팸메일을 자동으로 분류해주는 프로그램 
+  > 베이즈 정리 P(B∣A) = P(A∣B)P(B) / P(A)
+ 
   
-# 설명
-  spamTraining.txt과 hamTraining.txt 파일로 메일에 등장하는 단어들의 빈도수에 대해 **training**을 한 뒤  
-  임의의 이메일 spam1,2,3,4,5와, ham1,2,3,4,5에 대해 **testing**을 하여 결과를 print한다.
+# 동작 원리
+  spamTraining.txt과 hamTraining.txt 각각의 메일 파일에서 사용되는 단어들의 빈도수를 **training**을 한 뒤, 
+  임의의 txt 파일에서 사용되는 단어들의 빈도수를 **testing** 하여 일반 메일인지 스팸메일인지를 판단합니다. 
+ 
+ 
+# 실행법
+  * 메일을 txt 파일로 저장합니다. 
+  * Spam_filtering.java 파일을 실행합니다. 
+  * txt 파일명을 입력합니다. 
+  * (영어 메일만 가능합니다.)

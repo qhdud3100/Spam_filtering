@@ -77,7 +77,7 @@ public class Spam_filtering {
 		return list;
 	}
 	
-	//임의의 txt에 대하여 스팸메일인지 판단하여 알려주는 부분
+	//임의의 txt 파일명을 입력받아 스팸메일인지 알려줌
 	public void testing() {
 		boolean isSpam;
 		
@@ -92,7 +92,7 @@ public class Spam_filtering {
 
 	}
 	
-	// txt이름을 받아가서 
+	// txt이름을 받아가서 스팸인지 판단 
 	boolean a_simple_bayesian_spam_filter(String filename_for_test_email) {
 		
 		double spamProduct=1;
